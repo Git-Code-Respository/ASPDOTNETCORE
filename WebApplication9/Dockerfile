@@ -12,7 +12,6 @@ WORKDIR /src
 COPY ./*.* ./
 RUN dotnet restore ./WebApplication9.csproj
 COPY . .
-WORKDIR /./.
 RUN dotnet build WebApplication9.csproj -c Release -o /app/build
 
 FROM build AS publish
