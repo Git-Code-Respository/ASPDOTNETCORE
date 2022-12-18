@@ -12,7 +12,7 @@ WORKDIR /src
 COPY ./WebApplication9.csproj ./
 RUN dotnet restore './WebApplication9.csproj'
 COPY . .
-WORKDIR '/src/WebApplication9'
+WORKDIR '../src/WebApplication9'
 RUN dotnet build 'WebApplication9.csproj' -c Release -o /app/build
 
 FROM build AS publish
