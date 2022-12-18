@@ -10,13 +10,13 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ./WebApplication9.csproj ./
-RUN dotnet restore './WebApplication9.csproj'
+RUN dotnet restore WebApplication9.csproj
 COPY . .
 #WORKDIR '../src/WebApplication9'
-RUN dotnet build 'WebApplication9.csproj' -c Release -o /app/build
+RUN dotnet build WebApplication9.csproj -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish 'WebApplication9.csproj' -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish WebApplication9.csproj -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
